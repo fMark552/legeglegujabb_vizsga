@@ -1,0 +1,59 @@
+.mobile_sidebar {
+  @media screen and (min-width: 480px) {
+    display: none;
+  }
+}
+
+.sidebar {
+  background-color: white;
+  color: black;
+  margin-right: 25px;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  border-bottom-right-radius: 20px;
+  border: 1px solid lightgray;
+
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
+}
+
+.stats {
+  display: flex;
+  gap: 40px;
+}
+
+.menu {
+  text-align: center;
+
+  button {
+    border: black solid 1px;
+    background-color: white;
+    cursor: pointer;
+    padding: 10px;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: 180px;
+  }
+}
+
+.profilePic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}

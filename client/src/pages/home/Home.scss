@@ -1,0 +1,27 @@
+textarea {
+  resize: none;
+  width: 98%;
+  padding: 5px;
+}
+
+.your_feed_title {
+  text-align: center;
+}
+
+.new_post {
+  margin-bottom: 50px;
+
+  button {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid grey;
+    background-color: white;
+    width: 25%;
+  }
+
+  .word_counter {
+    float: right;
+    margin-top: -15px;
+    margin-right: 15px;
+  }
+}
