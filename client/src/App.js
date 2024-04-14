@@ -11,23 +11,28 @@ import {
 } from 'react-router-dom'
 import Home from './pages/home/Home'
 import Profile from './pages/profile/Profile'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 function App() {
   const currentUser = true
 
   const Layout = () => {
     return (
-      <div>
-        <Navbar />
-        <div style={{ display: 'flex' }}>
-          <div style={{ flex: 2 }}>
-            <Sidebar />
-          </div>
-          <div style={{ flex: 6 }}>
-            <Outlet />
+      <QueryClientProvider client={queryClient}>
+        <div>
+          <Navbar />
+          <div style={{ display: 'flex' }}>
+            <div style={{ flex: 2 }}>
+              <Sidebar />
+            </div>
+            <div style={{ flex: 6 }}>
+              <Outlet />
+            </div>
           </div>
         </div>
-      </div>
+      </QueryClientProvider>
     )
   }
 
