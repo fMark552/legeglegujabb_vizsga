@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react'
 import './Home.scss'
 import Posts from '../../components/posts/Posts.jsx'
+import Share from '../../components/share/Share.jsx'
 
 const Home = () => {
   const [characterCount, setCharacterCount] = useState(0)
@@ -21,7 +22,7 @@ const Home = () => {
       <div className="your_feed_title">
         <h1>Your feed</h1>
       </div>
-
+      {/* <Share /> */}
       <div className="new_post">
         <textarea
           rows="8"
