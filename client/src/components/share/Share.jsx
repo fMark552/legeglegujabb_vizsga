@@ -22,16 +22,14 @@ const Share = () => {
 
   const queryClient = useQueryClient()
 
-  const mutation = useMutation(
-    (newPost) => {
+  const mutation = useMutation({
+    mutationFn: (newPost) => {
       return makeRequest.post('/posts', newPost)
     },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['posts'])
-      },
-    }
-  )
+    onSuccess: () => {
+      queryClient.invalidateQueries(['posts'])
+    },
+  })
 
   const handleClick = async (e) => {
     e.preventDefault()

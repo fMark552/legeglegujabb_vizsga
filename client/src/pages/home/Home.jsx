@@ -22,7 +22,7 @@ const Home = () => {
       <div className="your_feed_title">
         <h1>Your feed</h1>
       </div>
-      {/* <Share /> */}
+      <Share />
       <div className="new_post">
         <textarea
           rows="8"

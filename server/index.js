@@ -27,5 +27,5 @@ app.use('/api/likes', likeRoutes)
 app.use('/api/relationships', relationshipRoutes)
 
 app.listen(port, () => {
-  console.log(`A szerver a ${port}-porton fut.`)
+  console.log(`Port number: ${port}`)
 })

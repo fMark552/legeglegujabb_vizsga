@@ -17,11 +17,12 @@ export const getPosts = (req, res) => {
       : `SELECT p.*, u.id AS userId, name, profilePic FROM posts AS p JOIN users AS u ON (u.id = p.userId)
     LEFT JOIN relationships AS r ON (p.userId = r.followedUserId) WHERE r.followerUserId= ? OR p.userId =?
     ORDER BY p.createdAt DESC`
-  const values = userId !== 'undefined' ? [userId] : [userInfo.id, userInfo.id]
+  // const values = userId !== 'undefined' ? [userId] : [userInfo.id, userInfo.id]
 
   // const q = `SELECT p.*, u.id AS userId, name, profilePic FROM posts AS p JOIN users AS u ON (u.id = p.userId)`
+  // db.query(q, values, (err, data) => {
 
-  db.query(q, values, (err, data) => {
+  db.query(q, (err, data) => {
     if (err) return res.status(500).json(err)
     return res.status(200).json(data)
   })
