@@ -30,7 +30,7 @@ app.use('/api/relationships', relationshipRoutes)
 //Android
 app.get('/comments/:id',getAComment)
 app.get('/pakkBlog',getABlog)
-app.get('users/:username',getAUser)
+app.get('/users/:username',getAUser)
 
 app.post('/login',ALogin)
 

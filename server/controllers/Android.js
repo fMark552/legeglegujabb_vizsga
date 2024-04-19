@@ -1,11 +1,12 @@
-import { db } from '../Database.js'
+import { db } from '../connect.js'
 import jwt from 'jsonwebtoken'
+import bcrypt from 'bcryptjs'
 
 export const postABlog = (req, res) => {
-    const q = 'INSERT INTO blog (text, userId, timestamp) VALUES (?, ?, ?);'
+    const q = 'INSERT INTO posts (`desc`, `userId`, `createdAt`) VALUES (?, ?, ?);'
     db.query(
       q,
-      [req.body.text, req.body.userId, req.body.timestamp],
+      [req.body.desc, req.body.userId, req.body.createdAt],
       (err, data) => {
         if (err) return res.status(500).json(err)
         return res.status(200).json('Post has been created!')
@@ -14,7 +15,7 @@ export const postABlog = (req, res) => {
 }
 
 export const getABlog=(req, res)=>{
-    const q ='SELECT blog.id, blog.text, blog.timestamp, users.username AS user FROM blog INNER JOIN users ON blog.userId=users.id;';
+    const q ='SELECT posts.id, posts.desc AS text, posts.createdAt AS timestamp, users.username AS users FROM posts INNER JOIN users ON posts.userId=users.id;';
     db.query(q, (err, data) => {
       if (err) return res.send(err)
       return res.json(data)
@@ -24,7 +25,7 @@ export const getABlog=(req, res)=>{
 
 export const getAComment = (req, res) => {
     const blogId = req.params.id;
-    const q='SELECT comments.id AS commentid, comments.commentText, comments.timestamp, users.username, blog.id AS blogid FROM comments INNER JOIN users ON comments.commentUserId=users.id INNER JOIN blog ON comments.commentBlogId=blog.id WHERE blog.id = ?;';
+    const q='SELECT comments.id AS commentid, comments.desc AS commentText, comments.createdAt AS timestamp, users.username, posts.id AS blogid FROM comments INNER JOIN users ON comments.userId=users.id INNER JOIN posts ON comments.postId=posts.id WHERE posts.id = ?;';
     db.query(q,[blogId],(err,data)=>{
       if(err) return res.send(err);
       return res.json(data);
@@ -32,8 +33,8 @@ export const getAComment = (req, res) => {
   }
   
   export const postAComment=(req,res)=>{
-    const q='INSERT INTO comments (commentText, timestamp, commentUserId, commentBlogId) VALUES (?, ?, ?, ?);';
-    db.query(q,[req.body.commentText,req.body.timestamp,req.body.commentUserId,req.body.commentBlogId],(err,data)=>{
+    const q='INSERT INTO comments (`desc`, `createdAt`, `userId`, `postId`) VALUES (?, ?, ?, ?);';
+    db.query(q,[req.body.desc,req.body.createdAt,req.body.userId,req.body.postId],(err,data)=>{
       if(err) return res.status(500).json(err);
       return res.status(200).json('Comment has been created!')
     })
