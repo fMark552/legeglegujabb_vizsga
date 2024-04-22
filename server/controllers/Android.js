@@ -15,7 +15,7 @@ export const postABlog = (req, res) => {
 }
 
 export const getABlog=(req, res)=>{
-    const q ='SELECT posts.id, posts.desc AS text, posts.createdAt AS timestamp, users.username AS users FROM posts INNER JOIN users ON posts.userId=users.id;';
+    const q ='SELECT posts.id, posts.desc AS text, posts.createdAt AS timestamp, users.username AS user FROM posts INNER JOIN users ON posts.userId=users.id;';
     db.query(q, (err, data) => {
       if (err) return res.send(err)
       return res.json(data)
