@@ -28,24 +28,24 @@ const Profile = () => {
       })
   )
 
-  const queryClient = useQueryClient()
+  // const queryClient = useQueryClient()
 
-  const mutation = useMutation(
-    (following) => {
-      if (following)
-        return makeRequest.delete('/relationships?userId=' + userId)
-      return makeRequest.post('/relationships', { userId })
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['relationship'])
-      },
-    }
-  )
+  // const mutation = useMutation(
+  //   (following) => {
+  //     if (following)
+  //       return makeRequest.delete('/relationships?userId=' + userId)
+  //     return makeRequest.post('/relationships', { userId })
+  //   },
+  //   {
+  //     onSuccess: () => {
+  //       queryClient.invalidateQueries(['relationship'])
+  //     },
+  //   }
+  // )
 
-  const handleFollow = () => {
-    mutation.mutate(relationshipData.includes(currentUser.id))
-  }
+  // const handleFollow = () => {
+  //   mutation.mutate(relationshipData.includes(currentUser.id))
+  // }
 
   return (
     <div className="profile">
@@ -70,7 +70,7 @@ const Profile = () => {
                 ) : userId === currentUser.id ? (
                   <button onClick={() => setOpenUpdate(true)}>update</button>
                 ) : (
-                  <button onClick={handleFollow}>
+                  <button>
                     {relationshipData.includes(currentUser.id)
                       ? 'Following'
                       : 'Follow'}

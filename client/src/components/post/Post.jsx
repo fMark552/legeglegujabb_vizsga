@@ -15,13 +15,10 @@ import { AuthContext } from '../../context/authContext'
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-
   const { currentUser } = useContext(AuthContext)
 
   const { isLoading, error, data } = useQuery(['likes', post.id], () =>
-    makeRequest.get('/likes?postId=' + post.id).then((res) => {
-      return res.data
-    })
+    makeRequest.get('/likes?postId=' + post.id).then((res) => res.data)
   )
 
   const queryClient = useQueryClient()
@@ -33,13 +30,14 @@ const Post = ({ post }) => {
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(['likes'])
+        queryClient.invalidateQueries(['likes', post.id])
       },
     }
   )
+
   const deleteMutation = useMutation(
-    (postId) => {
-      return makeRequest.delete('/posts/' + postId)
+    () => {
+      return makeRequest.delete('/posts/' + post.id)
     },
     {
       onSuccess: () => {
@@ -53,7 +51,7 @@ const Post = ({ post }) => {
   }
 
   const handleDelete = () => {
-    deleteMutation.mutate(post.id)
+    deleteMutation.mutate()
   }
 
   return (

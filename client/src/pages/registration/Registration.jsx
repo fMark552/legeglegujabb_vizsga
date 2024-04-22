@@ -66,7 +66,9 @@ const Registration = () => {
               If you already have an account, you can login{' '}
               <span>
                 {' '}
-                <Link to="/login">here</Link>
+                <Link className="login_here" to="/login">
+                  here
+                </Link>
               </span>
               .
             </p>

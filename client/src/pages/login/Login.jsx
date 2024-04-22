@@ -53,7 +53,9 @@ const Login = () => {
               If you dont't have an account, you can register{' '}
               <span>
                 {' '}
-                <Link to="/registration">here</Link>
+                <Link className="regHere" to="/registration">
+                  here
+                </Link>
               </span>
               .
             </p>

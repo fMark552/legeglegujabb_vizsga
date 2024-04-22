@@ -9,18 +9,12 @@ import { Link } from 'react-router-dom'
 const Sidebar = () => {
   return (
     <div>
-      <div className="mobile_sidebar">
-        <button>Profile</button>
-        <button>Friends</button>
-        <button>Stats</button>
-      </div>
-
       <div className="container sidebar">
         <div className="images">
           <div className="image">
             <Link to={`/profile/1`}>
               <img
-                src="https://www.kindpng.com/picc/m/252-2524695_dummy-profile-image-jpg-hd-png-download.png"
+                src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
                 alt="profile_pic"
                 className="profilePic"
               />
@@ -31,15 +25,15 @@ const Sidebar = () => {
           <h3>Friend list</h3>
           <hr />
           <div className="item">
-            <p>User1</p>
+            <p>John</p>
             <button>Unfollow</button>
           </div>
           <div className="item">
-            <p>User2</p>
+            <p>Jane</p>
             <button>Unfollow</button>
           </div>
           <div className="item">
-            <p>User3</p>
+            <p>Jack</p>
             <button>Unfollow</button>
           </div>
           <button>See all friends</button>

@@ -25,3 +25,33 @@ textarea {
     margin-right: 15px;
   }
 }
+
+.post {
+  padding: 10px;
+  margin-bottom: 20px;
+
+  button {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid grey;
+    background-color: white;
+    width: 25%;
+  }
+
+  .followButton {
+    cursor: pointer;
+    border: 1px solid grey;
+    background-color: white;
+    width: 10%;
+    padding: 0;
+    float: right;
+  }
+}
+
+hr {
+  margin-bottom: 30px;
+}
+
+strong {
+  color: black;
+}

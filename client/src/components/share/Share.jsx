@@ -3,6 +3,8 @@ import { useContext, useState } from 'react'
 import { AuthContext } from '../../context/authContext'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { makeRequest } from '../../axios'
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
+
 const Share = () => {
   const [file, setFile] = useState(null)
   const [desc, setDesc] = useState('')
@@ -21,6 +23,7 @@ const Share = () => {
   const { currentUser } = useContext(AuthContext)
 
   const queryClient = useQueryClient()
+  // const query = useQuery({ queryKey, queryFn })
 
   const mutation = useMutation({
     mutationFn: (newPost) => {
@@ -47,6 +50,7 @@ const Share = () => {
           <div className="left">
             <img src={'/upload/' + currentUser.profilePic} alt="" />
             <input
+              className="new_thought"
               type="text"
               placeholder={`What's on your mind ${currentUser.name}?`}
               onChange={(e) => setDesc(e.target.value)}
@@ -59,8 +63,11 @@ const Share = () => {
             )}
           </div>
         </div>
-        <hr />
+
         <div className="bottom">
+          <div className="right">
+            <button onClick={handleClick}>Share</button>
+          </div>
           <div className="left">
             <input
               type="file"
@@ -70,15 +77,15 @@ const Share = () => {
             />
             <label htmlFor="file">
               <div className="item">
-                <span>Add Image</span>
+                <span>
+                  <AddPhotoAlternateIcon />
+                </span>
               </div>
             </label>
           </div>
-          <div className="right">
-            <button onClick={handleClick}>Share</button>
-          </div>
         </div>
       </div>
+      <hr />
     </div>
   )
 }
